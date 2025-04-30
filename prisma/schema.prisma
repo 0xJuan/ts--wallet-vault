@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Mnemonic {
+  id         Int      @id @default(autoincrement())
+  name       String?
+  group      String?
+  created_at DateTime @default(now())
+  words      String   @unique
+  Wallets    Wallet[]
+}
+
+model Wallet {
+  id          Int       @id @default(autoincrement())
+  created_at  DateTime  @default(now())
+  active_at   DateTime?
+  burned_at   DateTime?
+  is_active   Boolean   @default(false)
+  is_burned   Boolean   @default(false)
+  name        String?   @unique
+  address     String    @unique
+  private_key String
+  memo        String?
+  Mnemonic    Mnemonic  @relation(fields: [Mnemonic_id], references: [id])
+  Mnemonic_id Int
+}

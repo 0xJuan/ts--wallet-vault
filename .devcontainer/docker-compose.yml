@@ -1,0 +1,9 @@
+services:
+  ts--wallet-vault:
+    container_name: ts--wallet-vault
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity

@@ -1,0 +1,29 @@
+{
+  "name": "wallet-vault",
+  "version": "1.0.0",
+  "description": "Wallet Vault",
+  "main": "index.js",
+  "scripts": {
+    "cli:generate": "tsx src/index.ts generate",
+    "cli:lookup": "tsx src/index.ts lookup",
+    "db:migrate:reset": "prisma migrate reset",
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "clean": "rm -rf prisma/migrations prisma/*.db prisma/*.db-journal src/generated",
+    "start": "tsx src/index.ts"
+  },
+  "author": "0xJuan",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "prisma": "^6.7.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "dotenv": "^16.5.0",
+    "viem": "^2.28.1"
+  }
+}
